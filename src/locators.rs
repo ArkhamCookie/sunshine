@@ -56,7 +56,10 @@ fn location_from_coords(coords: &str) -> Result<Location, SunshineError> {
 	};
 
 	if latitude.is_some() && longitude.is_some() {
-		Ok(Location { latitude: latitude.unwrap()?, longitude: longitude.unwrap()? })
+		Ok(Location {
+			latitude: latitude.unwrap()?,
+			longitude: longitude.unwrap()?,
+		})
 	} else {
 		Err(SunshineError::MalformedLocationString)
 	}
@@ -81,13 +84,19 @@ fn location_from_ip() -> Result<Location, SunshineError> {
 	let latitude = &body.latitude.parse::<f64>()?;
 	let longitude = &body.longitude.parse::<f64>()?;
 
-	Ok(Location { latitude: *latitude, longitude: *longitude })
+	Ok(Location {
+		latitude: *latitude,
+		longitude: *longitude,
+	})
 }
 
 fn location_from_name(name: &str) -> Result<Location, SunshineError> {
 	let api_url = "https://nominatim.openstreetmap.org";
 
-	let url = Url::parse(api_url).expect("couldn't parse `api_url`").join("search").expect("couldn't join `search` to url");
+	let url = Url::parse(api_url)
+		.expect("couldn't parse `api_url`")
+		.join("search")
+		.expect("couldn't join `search` to url");
 	let client = reqwest::blocking::Client::new();
 	let request = client
 		.get(url)
@@ -105,7 +114,10 @@ fn location_from_name(name: &str) -> Result<Location, SunshineError> {
 	let latitude = &location.lat.parse::<f64>()?;
 	let longitude = &location.lon.parse::<f64>()?;
 
-	Ok(Location { latitude: *latitude, longitude: *longitude })
+	Ok(Location {
+		latitude: *latitude,
+		longitude: *longitude,
+	})
 }
 
 pub(crate) fn get_location(location: String) -> Result<Location, SunshineError> {
