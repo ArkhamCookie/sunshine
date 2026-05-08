@@ -104,7 +104,6 @@ fn location_from_name(name: &str) -> Result<Location, SunshineError> {
 
 	let latitude = &location.lat.parse::<f64>()?;
 	let longitude = &location.lon.parse::<f64>()?;
-	// let name = &location.display_name;
 
 	Ok(Location { latitude: *latitude, longitude: *longitude })
 }
