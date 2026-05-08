@@ -2,5 +2,17 @@
 name = "sunshine"
 version = "0.1.0"
 edition = "2024"
+license = "Apache-2.0"
+authors = ["ArkhamCookie <cargo@mail.arkhamcookie.com>"]
+description = "A CLI to tell you when the sun rises or sets"
+homepage = "https://github.com/ArkhamCookie/sunrise"
+repository = "https://github.com/ArkhamCookie/sunrise"
+readme = "README.md"
+keywords = ["sunrise", "sunset", "cli"]
+categories = ["command-line-utilities"]
 
 [dependencies]
+clap = { version = "4.6.1", features = ["derive", "cargo"] }
+reqwest = { version = "0.13.3", features = ["blocking", "json", "query"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
