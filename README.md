@@ -2,6 +2,8 @@
 
 Sunrise is a simple CLI tool to determine the sunrise and sunset times for a given location.
 
+This tool is based on [sunshine](https://github.com/crescentrose/sunshine) created by [crescentrose](https://crescentro.se/).
+
 ## Usage
 
 ```shell
